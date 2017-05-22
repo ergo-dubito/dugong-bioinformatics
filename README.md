@@ -48,6 +48,10 @@ With a focus on fast access and availability of command line bioinformatics tool
 - [MEGAcmd](https://mega.nz/cmd): tool that allows access through the Mega cloud command line and provides a set of powerful commands for a file manipulation.
 - [Showterm](https://showterm.io/): is an open source terminal record and upload application that lets you easy to record how-to in your terminal. It will record all your terminal activity in text-base and upload to showterm.io as a video and then generates a link for you to share with your team-mates or embed it in your website as an iframe.
 
+SSH access to DugongCMD can be performed as follows:
+
+- [tty.js](https://github.com/chjj/tty.js/): a terminal in your browser using node.js and socket.io. Based on Fabrice Bellard's vt100 for jslinux.
+
 ## Bioinformatics Software
 
 Two open-source projects were integrated with ***Dugong***, [Linuxbrew](http://linuxbrew.sh/) and [Conda](http://conda.pydata.org/), for the simple distribution of bioinformatics packages. 
