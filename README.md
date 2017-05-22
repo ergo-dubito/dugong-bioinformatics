@@ -14,6 +14,8 @@ For more details on the Ubuntu operating system: [http://www.ubuntu.com](http://
 
 Dugong requires a minimum of knowledge about Docker, Linux or computing for its implementation, being compatible with Linux, Windows and MacOS operating systems. It also enables the execution of a complete work environment in high performance computing environments (HPC), virtual private server (VPS), as well as private, public or hybrid cloud computing.
 
+## MENU
+
 - [Dugong flavours](#Dugong-flavours)
   - [DugongGUI](#DugongGUI)
   - [DugongCMD](#DugongCMD)  
