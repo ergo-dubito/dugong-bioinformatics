@@ -34,7 +34,8 @@ Access as graphical interfaces available in DugongGUI can be performed through t
 
 - [Google Chrome](https://www.google.com/chrome/browser/): a browser that combines a minimalist design with sophisticated technology to make the web faster, safer and easier.
 - [Mozilla Firefox](https://www.mozilla.org/en/firefox): a free and open source web browser developed by the Mozilla Foundation and its subsidiary, Mozilla Corporation.
-- [MEGASync](https://mega.nz/#sync): a desktop client for MEGA Service Cloud providing easy automatic synchronization of files and folders between our computer and the cloud drive with 10Gb storage.
+- [MEGASync](https://mega.nz/#sync): a desktop client for MEGA Service Cloud providing easy automatic synchronization of files and folders between our computer and the cloud drive with 50Gb storage.
+- [MEGAcmd](https://mega.nz/cmd): tool that allows access through the Mega cloud command line and provides a set of powerful commands for a file manipulation.
 
 ***DugongGUI*** allows a simple, quick and easy distribution of any bioinformatics application that can be installed on an Ubuntu operating system.  It also allows the generated containers to be used for a wide range of purposes, such as training, data analysis, tool implementation, devops, etc.
 
