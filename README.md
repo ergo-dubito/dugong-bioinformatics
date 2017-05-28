@@ -305,6 +305,15 @@ It is strongly recommended that your system have 8 gigabytes or more of memory t
         docker start Dugong
         docker start DugongCMD
         docker start Dugong-CirComPara
+       
+- After starting the containers, enter the command below to obtain the ports for access through a browser:
+
+        docker ps
+        
+- Finally, access the addresses below through a browser to access the respective versions of Dugong:
+        
+        DugongGUI e CirComPara: http://localhost:<port>/vnc_auto.html?password=vncpassword (ports displayed in the above command)
+        DugongCMD: http://localhost:3000 (login: dugong / password: dugong
 
 ## Extending or adapting the Dugong image <a name="Extending" /> [[menu]](#menu)
 
