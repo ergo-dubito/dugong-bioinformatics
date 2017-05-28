@@ -43,10 +43,10 @@ Today, the Dugong operating system is available in two versions: ***DugongGUI***
 
 ### DugongGUI <a name="DugongGUI" /> [[menu]](#menu)
 
-Our great differential for applications in bioinformatics and computational biology. Based on Ubuntu 16.04, the ***DugongGUI*** image has two graphical interface (GUI) options: ***Xfce4*** or ***IceWM***.
+Our great differential for applications in bioinformatics and computational biology. Based on Ubuntu 16.04, the ***DugongGUI*** image has two graphical interface (GUI) options: ***Xfce4*** or ***IceWM*** (beta).
 
 - [Xfce4](https://www.xfce.org/) (translated as four individual letters) is a free and open source desktop environment for Unix platforms such as Linux, Solaris and BSD. As a fast, easy-to-use open-source workbench, it was selected as the official GUI for the Dugong project.
-- [IceWM](http://www.icewm.org/) is a window manager designed for lightweight simplicity and ease of use, but not focused on customizability. It looks similar to Windows 95.
+- [IceWM](http://www.icewm.org/) is a window manager designed for lightweight simplicity and ease of use, but not focused on customizability. It looks similar to Windows 95. In beta testing at Dugong.
 
 Access as graphical interfaces available in DugongGUI can be performed through two options:
 
