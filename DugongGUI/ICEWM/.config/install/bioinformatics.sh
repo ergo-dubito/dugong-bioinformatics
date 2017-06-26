@@ -9,4 +9,4 @@ wget --quiet https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.
 rm Miniconda2-latest-Linux-x86_64.sh && \
 ~/.conda2/bin/conda config --add channels r && \
 ~/.conda2/bin/conda config --add channels bioconda && \
-~/.conda2/bin/conda clean -tipsy \
+~/.conda2/bin/conda clean -tipsy
