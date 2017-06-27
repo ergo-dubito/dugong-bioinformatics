@@ -32,7 +32,7 @@ RUN apt-key adv --recv-key --keyserver keyserver.ubuntu.com "A6616109451BBBF2" \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends make grep sed sudo dpkg git wget zip build-essential python openssh-server \
     python-dev python-pip bzip2 mercurial locales ca-certificates subversion vim gdebi-core bash-completion apt-utils \
-    openjdk-8-jre unzip curl ruby net-tools libglib2.0-0 libxext6 libsm6 libxrender1 g++ ruby-dev rubygems libtinfo-dev \
+    openjdk-8-jre unzip curl ruby net-tools libglib2.0-0 libxext6 libsm6 libxrender1 g++ ruby-dev rubygems libtinfo-dev davfs2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /var/run/sshd
