@@ -46,6 +46,7 @@ EXPOSE $VNC_PORT $NO_VNC_PORT
 ENV HOME /headless
 ENV STARTUPDIR /dockerstartup
 WORKDIR $HOME
+ENV USER dugong
 
 ############### Environment config
 ENV DEBIAN_FRONTEND noninteractive
