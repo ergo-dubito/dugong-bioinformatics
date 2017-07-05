@@ -46,6 +46,11 @@ ADD .config/scripts/.bashrc $HOME/.bashrc
 ADD .config/install/ $INST_SCRIPTS/
 ADD tty.js /tty.js/
 
+COPY config/start.sh /usr/local/bin/
+COPY config/start-notebook.sh /usr/local/bin/
+COPY config/start-singleuser.sh /usr/local/bin/
+COPY config/jupyter_notebook_config.py $HOME/.jupyter/
+
 WORKDIR $HOME
 
 ############### Add dependencies and update packages
@@ -87,6 +92,14 @@ RUN apt-key adv --recv-key --keyserver keyserver.ubuntu.com "A6616109451BBBF2" \
     && chmod +X /dockerstartup/*.sh && chmod 755 /dockerstartup/*.sh \
     && /dockerstartup/generate_container_user.sh \
     && /bin/bash /headless/install/set_user_permission.sh /dockerstartup /headless
+    
+USER dugong
+
+RUN ~/.conda2/bin/conda update --all \
+    && ~/.conda2/bin/conda install jupyter \
+    && ~/.conda2/bin/conda clean -tipsy
+    
+USER root
 
 ############### http://bugs.python.org/issue19846
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
@@ -102,9 +115,10 @@ RUN chown -R dugong:dugong /data && \
 
 ENTRYPOINT ["tini", "--"]
 ENTRYPOINT ["/dockerstartup/startup.sh"]
-CMD ["--tail-log"]
+CMD ["start-notebook.sh"]
 
 EXPOSE 22
 EXPOSE 3000
+EXPOSE 8888
 
 WORKDIR /data
