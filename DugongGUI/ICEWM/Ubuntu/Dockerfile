@@ -55,12 +55,20 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /headless
 ENV STARTUPDIR /dockerstartup
 ENV INST_SCRIPTS $HOME/install
+ENV USER dugong
+ENV NB_USER dugong
+ENV NB_UID 1000
 
 ADD .config/GUI/icewm/ $HOME/
 ADD .config/scripts $STARTUPDIR
 ADD .config/scripts/.bashrc $HOME/.bashrc
 ADD .config/install/ $INST_SCRIPTS/
 ADD .config/scripts/xstartup $HOME/.vnc/
+
+COPY config/start.sh /usr/local/bin/
+COPY config/start-notebook.sh /usr/local/bin/
+COPY config/start-singleuser.sh /usr/local/bin/
+COPY config/jupyter_notebook_config.py $HOME/.jupyter/
 
 WORKDIR $HOME
 
@@ -78,7 +86,7 @@ RUN apt-key adv --recv-key --keyserver keyserver.ubuntu.com "A6616109451BBBF2" \
     && apt-get update && apt-get install -y --allow-unauthenticated make grep sed sudo dpkg git wget zip \
     build-essential python python-dev python-numpy bzip2 locales ca-certificates vim gdebi-core bash-completion apt-utils \
     openjdk-8-jre openssh-server unzip curl ruby net-tools icedtea-8-plugin zlib1g-dev libqt4-dbus libqt4-network \
-    chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg screen mlocate nano \
+    chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg screen mlocate nano asciinema \
     && ln -s /usr/bin/chromium-browser /usr/bin/google-chrome \
     && echo "CHROMIUM_FLAGS='--no-sandbox --start-maximized --user-data-dir'" > $HOME/.chromium-browser.init \
     && wget --quiet https://github.com/krallin/tini/releases/download/v0.10.0/tini \
@@ -109,9 +117,20 @@ RUN apt-key adv --recv-key --keyserver keyserver.ubuntu.com "A6616109451BBBF2" \
     && ~/.conda2/bin/conda update --all \
     && ~/.conda2/bin/conda clean -tipsy \
     && chmod +X /dockerstartup/*.sh && chmod 755 /dockerstartup/*.sh \
+    && chmod +x /usr/local/bin/start.sh \
+    && chmod +x /usr/local/bin/start-notebook.sh \
+    && chmod +x /usr/local/bin/start-singleuser.sh \
     && /dockerstartup/generate_container_user.sh \
     && chmod 755 $HOME/.vnc/xstartup && chown dugong:dugong $HOME/.vnc/xstartup \
     && /bin/bash /headless/install/set_user_permission.sh /dockerstartup /headless
+
+USER dugong
+
+RUN ~/.conda2/bin/conda update --all \
+    && ~/.conda2/bin/conda install spyder anaconda-navigator jupyter \
+    && ~/.conda2/bin/conda clean -tipsy
+
+USER root
 
 ############### http://bugs.python.org/issue19846
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
@@ -127,7 +146,7 @@ RUN chown -R dugong:dugong /data && \
 
 ENTRYPOINT ["tini", "--"]
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
-CMD ["--tail-log"]
+CMD ["start-notebook.sh"]
 
 RUN chmod 777 /var/tmp && chown -R root:root /var/tmp && chmod 777 /tmp && chown -R root:root /tmp
 
